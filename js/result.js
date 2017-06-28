@@ -54,7 +54,7 @@ function getResult() {
 
 
 function readApi() {
-    var env = JSON.parse(fs.readFileSync('env.json', 'utf8'))
+    var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.api === '') {
         return false
     } else {
@@ -63,7 +63,7 @@ function readApi() {
 }
 
 function readResource() {
-    var env = JSON.parse(fs.readFileSync('env.json', 'utf8'))
+    var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.resource === '') {
         alert("resource id null !")
     } else {

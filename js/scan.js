@@ -51,7 +51,7 @@ function openResultWindow() {
         BrowserWindow
     } = require('electron').remote;
     let win = new BrowserWindow({
-        width: 800,
+        width: 500,
         height: 600,
         resizable: false,
         autoHideMenuBar: true,
@@ -61,12 +61,12 @@ function openResultWindow() {
         win = null
     })
 
-    win.loadURL(__dirname + '/result.html')
+    win.loadURL(__dirname + '/../result.html')
 
 }
 
 function readApi() {
-	var env = JSON.parse(fs.readFileSync('env.json', 'utf8'))
+	var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.api === '') {
         return false
     } else {
@@ -75,9 +75,9 @@ function readApi() {
 }
 
 function saveResource(id) {
-	var env = JSON.parse(fs.readFileSync('env.json', 'utf8'))
+	var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
 	env.resource = id;
-    var file = fs.createWriteStream("env.json")
+    var file = fs.createWriteStream(".env")
     file.once('open', function(ofile) {
         file.write(JSON.stringify(env))
         file.end()

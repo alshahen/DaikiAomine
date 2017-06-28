@@ -12,8 +12,8 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-if (!fs.existsSync('env.json')) {
-    var file = fs.createWriteStream("env.json")
+if (!fs.existsSync('.env')) {
+    var file = fs.createWriteStream(".env")
     file.once('open', function(ofile) {
         file.write('{"api":"", "resource":""}')
         file.end()
@@ -22,11 +22,11 @@ if (!fs.existsSync('env.json')) {
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600,resizable: false, autoHideMenuBar: true,center:true ,frame: false, title:'Daiki Aomine', thickFrame :true,movable:true })
+  mainWindow = new BrowserWindow({width: 800, height: 600,resizable: false, autoHideMenuBar: true,center:true ,frame: false, title:'Daiki Aomine' })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'scan.html'),
     protocol: 'file:',
     slashes: true
   }))
