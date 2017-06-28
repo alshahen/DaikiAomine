@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Daiki Aomine</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+      body{
+        background: #31343D;
+        color: #ffffff;
+        width: 100%;
+        height: 100%;
+      }
+      #title{
+        color:#FEFEFE;
+        margin-top: 15%;
+      }
+      #up{
+        margin:auto;
+      }
+      #by{
+        margin-top: 10%;
+      }
+      #exitbtn{
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+  <img class="pull-right" id="exitbtn" src="imgs/x.png">
+  <br />
+    <h1 class="text-center" id="title">Daiki Aomine</h1>
+    <div class="text-center">
+      <div class="form-group">
+        <label class="help-block">Please choose file to scan </label>
+        <input type="button" class="btn btn-info" id="up" value="Choose File!">
+        <p class="help-block">this program working by virustotal API!</p>
+      </div>
+      <input type="button" class="btn btn-success" id="scanbtn" value="Scan !">
+    </div>
+    <p class="text-center" id="by">by <a id="mysite" href="#">Ahmed Hassan</a></p>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+  </script>
+</html>
