@@ -10,8 +10,8 @@ function getResult() {
         url: 'https://www.virustotal.com/vtapi/v2/file/report',
         method: 'POST',
         formData: {
-            'apikey': readApi(),
-            'resource': readResource()
+            'apikey': getApi(),
+            'resource': getResource()
         }
     }
 
@@ -53,7 +53,7 @@ function getResult() {
 }
 
 
-function readApi() {
+function getApi() {
     var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.api === '') {
         return false
@@ -62,7 +62,7 @@ function readApi() {
     }
 }
 
-function readResource() {
+function getResource() {
     var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.resource === '') {
         alert("resource id null !")

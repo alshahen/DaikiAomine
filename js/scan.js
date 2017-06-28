@@ -12,20 +12,20 @@ document.getElementById('up').onclick = () => {
 
 document.getElementById('scanbtn').onclick = () => {
     var filePath = document.getElementById("up").value
-    if (filePath != "" && readApi() != false) {
+    if (filePath != "" && getApi() != false) {
         document.getElementById("scanbtn").value = "Please Wait ..."
         var options = {
             url: 'https://www.virustotal.com/vtapi/v2/file/scan',
             method: 'POST',
             formData: {
-                'apikey': readApi(),
+                'apikey': getApi(),
                 'file': fs.createReadStream(filePath)
             }
         }
 
         request(options, function(error, response, body) {
             if (!error && response.statusCode == 200) {
-                saveResource(JSON.parse(body).resource)
+                setResource(JSON.parse(body).resource)
                 openResultWindow()
             } else {
                 alert("the status code is :" + response.statusCode + " " + error + " " + body)
@@ -38,7 +38,23 @@ document.getElementById('scanbtn').onclick = () => {
     }
 }
 
-document.getElementById('exitbtn').onclick = () => {
+document.getElementById('setting').onclick = () => {
+    const {BrowserWindow} = electron
+    let win = new BrowserWindow({
+        width: 800,
+        height: 300,
+        resizable: false,
+        autoHideMenuBar: true,
+        center: true
+    })
+    win.on('closed', () => {
+        win = null
+    })
+
+    win.loadURL(__dirname + '/../setting.html')
+}
+
+document.getElementById('exit').onclick = () => {
     app.quit()
 }
 
@@ -47,9 +63,7 @@ document.getElementById('mysite').onclick = () => {
 }
 
 function openResultWindow() {
-    const {
-        BrowserWindow
-    } = require('electron').remote;
+    const {BrowserWindow} = electron
     let win = new BrowserWindow({
         width: 500,
         height: 600,
@@ -65,7 +79,7 @@ function openResultWindow() {
 
 }
 
-function readApi() {
+function getApi() {
 	var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
     if (env.api === '') {
         return false
@@ -74,7 +88,7 @@ function readApi() {
     }
 }
 
-function saveResource(id) {
+function setResource(id) {
 	var env = JSON.parse(fs.readFileSync('.env', 'utf8'))
 	env.resource = id;
     var file = fs.createWriteStream(".env")
