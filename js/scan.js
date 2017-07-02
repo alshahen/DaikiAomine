@@ -12,7 +12,7 @@ document.getElementById('up').onclick = () => {
 
 document.getElementById('scanbtn').onclick = () => {
     var filePath = document.getElementById("up").value
-    if (filePath != "" && getApi() != false) {
+    if (fs.existsSync(filePath) && getApi()) {
         document.getElementById("scanbtn").value = "Please Wait ..."
         var options = {
             url: 'https://www.virustotal.com/vtapi/v2/file/scan',
