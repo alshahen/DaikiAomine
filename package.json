@@ -1,6 +1,6 @@
 {
   "name": "Daiki-Aomine",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "desktop client for virustotal.com",
   "author": "Ahmed Hassan <me@alshahen.me>",
   "main": "main.js",
@@ -11,10 +11,8 @@
   "repository": "https://github.com/alshahen/DaikiAomine",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "virustotal",
+    "desktop"
   ],
   "build": {
     "appId": "net.Daiki.Aomine",

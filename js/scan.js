@@ -45,7 +45,11 @@ document.getElementById('setting').onclick = () => {
         height: 300,
         resizable: false,
         autoHideMenuBar: true,
+        show: false,
         center: true
+    })
+    win.once('ready-to-show', () => {
+    win.show()
     })
     win.on('closed', () => {
         win = null
@@ -69,8 +73,14 @@ function openResultWindow() {
         height: 600,
         resizable: false,
         autoHideMenuBar: true,
+        show: false,
         center: true
     })
+
+    win.once('ready-to-show', () => {
+    win.show()
+    })   
+    
     win.on('closed', () => {
         win = null
     })

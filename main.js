@@ -22,14 +22,18 @@ if (!fs.existsSync('.env')) {
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600,resizable: false, autoHideMenuBar: true,center:true ,frame: false, title:'Daiki Aomine' })
+  mainWindow = new BrowserWindow({width: 800, height: 600,resizable: false, autoHideMenuBar: true,center: true,frame: false, title:'Daiki Aomine',show : false})
 
+  mainWindow.once('ready-to-show', () => {
+  mainWindow.show()
+  })
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'scan.html'),
     protocol: 'file:',
     slashes: true
   }))
+
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -41,6 +45,8 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+
 }
 
 // This method will be called when Electron has finished
